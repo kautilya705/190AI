@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.assignment-card {
+  transition: border-color 0.2s ease;
+}
+
+.assignment-card:hover {
+  border-color: #0f172a;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #0f172a !important;
+  ring: 0 !important;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #0f172a;
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-dot {
+  transform: translateX(100%);
+}
+
+.table-row-hover:hover {
+  background-color: #F8FAFC;
+}
+
+.side-drawer {
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#drawer-toggle:checked ~ .side-drawer {
+  transform: translateX(0);
+}
+
+#drawer-toggle:checked ~ .drawer-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
