@@ -84,9 +84,31 @@ vercel env add VITE_LAMBDA_URL
    - Go to Vercel Dashboard → Project Settings → Environment Variables
    - Update `VITE_LAMBDA_URL` with your Function URL
 
-### 3. IAM Policy for Lambda
+### 3. IAM Policy for Lambda (Inline Policy)
 
-Your Lambda execution role needs this policy:
+Your Lambda execution role needs S3 access. Use the inline policy in `backend/lambda-s3-inline-policy.json`.
+
+**Option A: AWS Console**
+
+1. Go to **IAM** → **Roles** → select your Lambda execution role (e.g. the role you chose when creating the function).
+2. Open **Add permissions** → **Create inline policy**.
+3. Choose **JSON**, paste the contents of `backend/lambda-s3-inline-policy.json` (or the policy below).
+4. Click **Review policy**, name it (e.g. `LambdaS3Access`), then **Create policy**.
+
+**Option B: AWS CLI**
+
+Replace `YOUR_LAMBDA_ROLE_NAME` with your Lambda function’s execution role name (e.g. `lambda-execution-role`):
+
+```bash
+aws iam put-role-policy \
+  --role-name YOUR_LAMBDA_ROLE_NAME \
+  --policy-name LambdaS3Access \
+  --policy-document file://backend/lambda-s3-inline-policy.json
+```
+
+To find the role name: **Lambda** → your function → **Configuration** → **Permissions** → **Execution role**.
+
+**Policy (same as in `backend/lambda-s3-inline-policy.json`):**
 
 ```json
 {
@@ -111,6 +133,8 @@ Your Lambda execution role needs this policy:
   ]
 }
 ```
+
+If your bucket name is different from `latex-submission-platform`, edit the `Resource` values in the JSON to match your bucket.
 
 ## Testing Deployment
 
