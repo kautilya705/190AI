@@ -21,7 +21,7 @@
 
 3. **Configure Environment Variables:**
    - In Project Settings → Environment Variables
-   - Add: `VITE_LAMBDA_URL` = `https://your-api-gateway-url.execute-api.region.amazonaws.com/prod`
+   - Add: `VITE_LAMBDA_URL` = `https://your-function-url.lambda-url.region.on.aws/`
    - Add for Production, Preview, and Development environments
 
 4. **Deploy:**
@@ -43,7 +43,7 @@ vercel
 
 # Set environment variable
 vercel env add VITE_LAMBDA_URL
-# Enter your Lambda API Gateway URL when prompted
+# Enter your Lambda Function URL when prompted
 ```
 
 ### 2. Backend Deployment (AWS Lambda)
@@ -73,16 +73,16 @@ vercel env add VITE_LAMBDA_URL
    - Timeout: 30 seconds
    - Memory: 256 MB
 
-5. **Create API Gateway:**
-   - Create REST API
-   - Create POST method → Integration: Lambda Function
+5. **Create Lambda Function URL:**
+   - In Lambda Console → Configuration → Function URL
+   - Click "Create function URL"
+   - Auth type: NONE (or AWS_IAM for auth)
    - Enable CORS
-   - Deploy API → Stage: `prod`
-   - Copy the Invoke URL
+   - Copy the Function URL
 
 6. **Update Vercel Environment Variable:**
    - Go to Vercel Dashboard → Project Settings → Environment Variables
-   - Update `VITE_LAMBDA_URL` with your API Gateway URL
+   - Update `VITE_LAMBDA_URL` with your Function URL
 
 ### 3. IAM Policy for Lambda
 
@@ -121,7 +121,7 @@ Your Lambda execution role needs this policy:
 
 2. **Test Lambda:**
    ```bash
-   curl -X POST https://your-api-gateway-url/prod \
+   curl -X POST https://your-function-url.lambda-url.us-east-1.on.aws/ \
      -H "Content-Type: application/json" \
      -d '{"action":"getAssignments"}'
    ```
@@ -134,8 +134,8 @@ Your Lambda execution role needs this policy:
 ## Troubleshooting
 
 ### CORS Issues
-- Ensure API Gateway has CORS enabled
-- Check Lambda response headers include `Access-Control-Allow-Origin: *`
+- Ensure Function URL has CORS enabled in settings
+- Check Lambda response headers include `Access-Control-Allow-Origin: *` (already in code)
 
 ### Environment Variables Not Working
 - Re-deploy after adding environment variables

@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getAssignmentDetail, submitAssignment, getAssignmentSubmissions } from '../services/api'
 
 function AssignmentDetail() {
   const { id } = useParams()
-  const navigate = useNavigate()
   const [assignment, setAssignment] = useState(null)
   const [submissions, setSubmissions] = useState([])
   const [showDrawer, setShowDrawer] = useState(false)
@@ -108,6 +107,7 @@ function AssignmentDetail() {
       <header className="w-full border-b border-slate-100 py-10 bg-white sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-8 flex justify-between items-center">
           <div className="flex flex-col">
+            <Link to="/" className="text-[10px] text-slate-400 hover:text-primary mb-2 uppercase tracking-wider">← Back to assignments</Link>
             <div className="flex items-center gap-3 mb-1">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">{assignment.course}</span>
               <span className="w-1 h-1 rounded-full bg-slate-300"></span>
@@ -265,22 +265,22 @@ function AssignmentDetail() {
         <form className="space-y-8 flex-1 overflow-y-auto pr-4">
           <div className="space-y-2">
             <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Title</label>
-            <input className="w-full border-slate-200 rounded text-sm focus:ring-0 focus:border-primary transition-colors" type="text" defaultValue={assignment.title} />
+            <input className="w-full border border-slate-200 rounded text-sm px-3 py-2 focus:ring-0 focus:border-primary transition-colors" type="text" defaultValue={assignment.title} />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Due Date</label>
-              <input className="w-full border-slate-200 rounded text-sm focus:ring-0 focus:border-primary" type="date" defaultValue={assignment.deadline.split('T')[0]} />
+              <input className="w-full border border-slate-200 rounded text-sm px-3 py-2 focus:ring-0 focus:border-primary" type="date" defaultValue={assignment.deadline?.split('T')[0]} />
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Max Score</label>
-              <input className="w-full border-slate-200 rounded text-sm focus:ring-0 focus:border-primary" type="number" defaultValue="100" />
+              <input className="w-full border border-slate-200 rounded text-sm px-3 py-2 focus:ring-0 focus:border-primary" type="number" defaultValue="100" />
             </div>
           </div>
           <div className="space-y-2">
             <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Submission Template (URL)</label>
             <div className="flex gap-2">
-              <input className="flex-1 border-slate-200 rounded text-sm focus:ring-0 focus:border-primary" placeholder="Overleaf Link or PDF URL" type="text" />
+              <input className="flex-1 border border-slate-200 rounded text-sm px-3 py-2 focus:ring-0 focus:border-primary" placeholder="Overleaf Link or PDF URL" type="text" />
             </div>
           </div>
           <div className="space-y-2">

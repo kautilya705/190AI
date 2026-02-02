@@ -10,6 +10,7 @@ export default {
         "navy": "#0f172a",
         "light-grey": "#f1f5f9",
         "slate-50": "#f8fafc",
+        "primary": "#0F172A",
         "primary-navy": "#0f172a",
         "accent-blue": "#1D4ED8",
         "border-soft": "#E5E7EB",

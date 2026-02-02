@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { getAssignments } from '../services/api'
 
 function StudentDashboard() {
@@ -89,13 +89,14 @@ function StudentDashboard() {
       <nav className="border-b border-light-grey sticky top-0 bg-white/80 backdrop-blur-md z-50">
         <div className="max-w-4xl mx-auto px-8 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-12">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-navy">Platform</span>
+            <Link to="/" className="text-[10px] uppercase tracking-[0.3em] font-bold text-navy">Platform</Link>
             <div className="flex space-x-8">
-              <a className="text-xs uppercase tracking-widest font-semibold border-b border-navy pb-1" href="#">Assignments</a>
+              <Link to="/" className="text-xs uppercase tracking-widest font-semibold border-b border-navy pb-1">Assignments</Link>
+              <Link to="/professor" className="text-xs uppercase tracking-widest font-medium text-navy/60 hover:text-navy transition-colors">Professor</Link>
             </div>
           </div>
           <div>
-            <a className="text-xs uppercase tracking-widest font-medium text-navy/60 hover:text-navy transition-colors" href="#">Log out</a>
+            <span className="text-xs uppercase tracking-widest font-medium text-navy/60 hover:text-navy transition-colors cursor-pointer">Log out</span>
           </div>
         </div>
       </nav>

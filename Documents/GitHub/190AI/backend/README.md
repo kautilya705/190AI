@@ -29,14 +29,15 @@ zip function.zip bootstrap
      - `BUCKET_NAME`: Your S3 bucket name
    - Set IAM role with S3 read/write permissions
 
-4. Configure API Gateway:
-   - Create REST API
-   - Create POST method pointing to Lambda
+4. Create Lambda Function URL:
+   - Go to Lambda → Configuration → Function URL
+   - Click "Create function URL"
+   - Auth type: NONE
    - Enable CORS
-   - Deploy API
+   - Copy the Function URL
 
 5. Update frontend `.env`:
-   - Set `VITE_LAMBDA_URL` to your API Gateway endpoint
+   - Set `VITE_LAMBDA_URL` to your Function URL
 
 ## Environment Variables
 

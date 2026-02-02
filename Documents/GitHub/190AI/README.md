@@ -78,8 +78,8 @@ All metadata (assignments, submissions, grades) stored in a single S3 object (`m
 
 ### API Flow
 
-1. Frontend makes POST request to API Gateway
-2. API Gateway invokes Lambda function
+1. Frontend makes POST request to Lambda Function URL
+2. Lambda function handles request directly
 3. Lambda reads/writes S3 metadata object
 4. Lambda uploads/downloads files to/from S3
 5. Response returned to frontend
@@ -108,8 +108,8 @@ All metadata (assignments, submissions, grades) stored in a single S3 object (`m
 
 2. **Set environment variable:**
    - In Vercel dashboard, go to Project Settings → Environment Variables
-   - Add `VITE_LAMBDA_URL` with your API Gateway endpoint URL
-   - Example: `https://abc123.execute-api.us-east-1.amazonaws.com/prod`
+   - Add `VITE_LAMBDA_URL` with your Lambda Function URL
+   - Example: `https://abc123.lambda-url.us-east-1.on.aws/`
 
 3. **Deploy:**
    - Push to main branch (auto-deploys)
@@ -128,10 +128,10 @@ All metadata (assignments, submissions, grades) stored in a single S3 object (`m
    - Upload `function.zip` to Lambda
    - Set handler to `bootstrap`
    - Set environment variable `BUCKET_NAME` to your S3 bucket name
-   - Configure API Gateway to invoke Lambda
+   - Create Function URL (Configuration → Function URL)
 
-3. **Get API Gateway URL:**
-   - Copy the API Gateway endpoint URL
+3. **Get Function URL:**
+   - Copy the Function URL from Lambda Console
    - Add it to Vercel environment variables as `VITE_LAMBDA_URL`
 
 ## License

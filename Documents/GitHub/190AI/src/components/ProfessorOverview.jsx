@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { getAssignments } from '../services/api'
 
 function ProfessorOverview() {
@@ -81,17 +81,17 @@ function ProfessorOverview() {
     <div className="flex flex-col min-h-screen bg-white text-slate-900">
       <header className="border-b border-border-light px-12 h-20 flex items-center justify-between bg-white">
         <div className="flex items-center gap-16">
-          <div className="flex items-center gap-2">
+          <Link to="/professor" className="flex items-center gap-2">
             <div className="bg-primary-navy text-white p-1 rounded-md flex items-center justify-center">
               <span className="material-symbols-outlined text-lg">terminal</span>
             </div>
             <span className="font-bold tracking-tight text-lg">Scholar</span>
-          </div>
+          </Link>
           <nav className="hidden md:flex items-center gap-10">
-            <a className="text-sm text-slate-400 hover:text-primary-navy transition-colors font-medium" href="#">Dashboard</a>
-            <a className="text-sm nav-link-active text-primary-navy font-semibold relative after:absolute after:-bottom-[27px] after:left-0 after:w-full after:h-[2px] after:bg-primary-navy" href="#">Assignments</a>
-            <a className="text-sm text-slate-400 hover:text-primary-navy transition-colors font-medium" href="#">Grades</a>
-            <a className="text-sm text-slate-400 hover:text-primary-navy transition-colors font-medium" href="#">Students</a>
+            <span className="text-sm text-slate-400 hover:text-primary-navy transition-colors font-medium cursor-default">Dashboard</span>
+            <Link to="/professor" className="text-sm text-primary-navy font-semibold relative after:content-[''] after:absolute after:-bottom-[27px] after:left-0 after:w-full after:h-[2px] after:bg-primary-navy">Assignments</Link>
+            <span className="text-sm text-slate-400 hover:text-primary-navy transition-colors font-medium cursor-default">Grades</span>
+            <span className="text-sm text-slate-400 hover:text-primary-navy transition-colors font-medium cursor-default">Students</span>
           </nav>
         </div>
         <div className="flex items-center gap-6">
@@ -185,6 +185,7 @@ function ProfessorOverview() {
             <span className="font-bold tracking-tight text-[10px] uppercase">Scholar</span>
           </div>
           <p className="text-[9px] font-bold tracking-[0.5em] text-slate-300 uppercase">Mirrored Academic Experience</p>
+          <Link to="/" className="text-[10px] text-slate-400 hover:text-primary-navy transition-colors mt-2">← Student view</Link>
         </footer>
       </main>
 

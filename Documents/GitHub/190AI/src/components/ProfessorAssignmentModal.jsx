@@ -57,7 +57,7 @@ function ProfessorAssignmentModal({ onClose, onSave }) {
                   onChange={(e) => setFormData({ ...formData, allowLateSubmission: e.target.checked })}
                 />
                 <label className="toggle-label block overflow-hidden h-6 rounded-full bg-light-grey cursor-pointer transition-colors duration-200" htmlFor="toggle">
-                  <span className="toggle-dot block h-6 w-6"></span>
+                  <span className="toggle-dot block h-6 w-6 rounded-full bg-white shadow-sm"></span>
                 </label>
               </div>
             </div>
