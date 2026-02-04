@@ -19,7 +19,14 @@ export default {
         "soft-gray": "#f8fafc",
       },
       fontFamily: {
-        "sans": ["Inter", "sans-serif"]
+        "sans": ["Inter", "sans-serif"],
+        "display": ["Lexend", "sans-serif"]
+      },
+      borderRadius: {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "9999px"
       },
     },
   },
